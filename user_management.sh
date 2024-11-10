@@ -5,7 +5,7 @@ function create_user {
 	read -p "Enter password for $username: " password
 	echo "User creation in progress..." 
 	sleep 2s
-	$(sudo useradd -m $username -p $password)
+	$(sudo useradd -m -p "$(openssl passwd -6 "$password")" $username) 
 	echo "User $username created successfully."
 }
 #create_user
